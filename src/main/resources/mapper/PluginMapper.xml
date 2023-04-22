@@ -1,0 +1,17 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mybatis.PluginMapper">
+
+
+    <select id="getUser" resultType="com.example.mybatis.User"
+        parameterType="string">
+        select * from user
+        <where>
+            <if test="username != null">
+                username like '%' || #{username} || '%'
+            </if>
+        </where>
+    </select>
+</mapper>
